@@ -43,13 +43,13 @@
 
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
-    for(int i = 0; i<this.follows.length; i++){
+    for (int i = 0; i < fCount; i++) {
         if (this.follows[i].equals(name)) {
             return true;
         }
     }
-        return false;
-    }
+    return false;
+}
     /** Makes this user follow the given name. If successful, returns true. 
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
@@ -76,6 +76,8 @@ public boolean removeFollowee(String name) {
                 return true;
             }
         }
+        return false;
+    }
 
     /** Counts the number of users that both this user and the other user follow.
     /*  Notice: This is the size of the intersection of the two follows lists. */
@@ -94,7 +96,7 @@ public boolean removeFollowee(String name) {
     /** Checks is this user is a friend of the other user.
      *  (if two users follow each other, they are said to be "friends.") */
  public boolean isFriendOf(User other) {
-    if (this.follows(other) && other.follows(this)) {
+ if (this.follows(other.getName()) && other.follows(this.name)) {
         return true;
     }
     return false;
